@@ -1,0 +1,39 @@
+<% if notice.present? %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="lead buffer-bottom">
+      <p id="notice"><%= notice %></p>
+    </div>
+  </div>
+<% end %>
+
+<div class="event">
+  <div class="event-info row">
+    <div class="col-md-12">
+      <%= content_tag 'div', '', class: 'event-background',
+                      style: "background-image: url(#{asset_path('event.jpg')})" %>
+
+      <div class="event-info-inner row">
+        <div class="col-md-6">
+          <div class="event-description">
+            <h1><%= @event.title %></h1>
+            <h3><%= l @event.datetime, format: :short %></h3>
+            <h3><small><%= link_to @event.address,
+                                   "https://yandex.ru/maps/?text=#{@event.address}" %></small></h3>
+            <p><%= @event.description %></p>
+          </div>
+          <div class="buffer-both">
+            <%= link_to t('back'), events_path, class: 'btn btn-secondary' %>
+          </div>
+          <% if current_user_can_edit?(@event) %>
+            <div class="buffer-both">
+              <%= link_to t('edit_event'), edit_event_path(@event), class: 'btn btn-success' %>
+              <%= link_to t('delete'), event_path(@event), method: :delete, data: {confirm: t('are_you_sure')},
+                          class: 'btn btn-danger' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

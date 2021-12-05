@@ -1,0 +1,19 @@
+<% if notice.present? %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="lead buffer-bottom">
+      <p id="notice"><%= notice %></p>
+    </div>
+  </div>
+<% end %>
+
+<h1>События</h1>
+
+<div class="buffer-both">
+  <%= link_to 'Создать событие', new_event_path, class: 'btn btn-success' %>
+</div>
+
+<div class="row buffer-bottom">
+  <%# Рендерим сразу массив событий, каждый в паршиале 'events/event' %>
+  <%= render partial: 'events/event', collection: @events %>
+</div>

@@ -1,0 +1,30 @@
+<%# Паршиал дляотображения формы создания нового события %>
+<%= form_for(@event) do |f| %>
+
+  <%= render partial: 'partials/form_errors', locals: {model: @event} %>
+
+  <div class="mb-3">
+    <%= f.label :Название %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :Адрес %>
+    <%= f.text_field :address, class: 'form-control' %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :Время_события %>
+    <p><%= f.datetime_select :datetime, class: 'form-control' %></p>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :Описание %>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Сохранить', class: 'btn btn-success' %>
+    <%= link_to 'Вернуться', :back, class: 'btn btn-secondary'%>
+  </div>
+<% end %>
