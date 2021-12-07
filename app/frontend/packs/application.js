@@ -14,6 +14,7 @@ const images = require.context('../../frontend/images', true)
 const imagePath = (name) => images(name, true)
 
 import 'bootstrap/dist/js/bootstrap'
+import "@fortawesome/fontawesome-free/css/all"
 
 Rails.start()
 Turbolinks.start()

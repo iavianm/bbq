@@ -64,6 +64,14 @@ ru:
     name: 'Шашлыки'
     company: 'Наша компания'
 
+  comments:
+    comment:
+      destroy_confirm: 'Вы уверены, что хотите удалить этот комменатрий?'
+
+  subscriptions:
+    subscription:
+      destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
+
   # Перевод и склонение ошибок
   allowed:
     one: 'Допущена'
@@ -166,7 +174,6 @@ ru:
   send: 'Отправить'
   subscribe: 'Подписаться'
   subscribers: 'Подписались:'
-  comments: 'Комментов:'
   photos: 'Фоток:'
   will_go: 'Пойдут:'
   back: 'Назад'
