@@ -14,10 +14,10 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 35 }
 
   validates :email, length: { maximum: 255 },
-                    uniqueness: true,
-                    format: /\A[a-zA-Z0-9\-_.]+@[a-zA-Z0-9\-_.]+\z/
+            uniqueness: true,
+            format: /\A[a-zA-Z0-9\-_.]+@[a-zA-Z0-9\-_.]+\z/
 
-  before_validation :set_name, on: :create
+  # before_validation :set_name, on: :create
 
   after_commit :link_subscriptions, on: :create
 
