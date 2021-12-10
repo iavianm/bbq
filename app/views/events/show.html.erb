@@ -64,7 +64,11 @@
           </p>
         </div>
       </div>
-      <% if @event.user != current_user %>
+      <% if @event.user == current_user %>
+        <div>
+          <h4>Вы инициатор события!</h4>
+        </div>
+      <% else %>
         <div class="event-subscription-form">
           <h4>Я пойду:</h4>
           <div>
