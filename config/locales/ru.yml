@@ -10,9 +10,8 @@ ru:
       models:
         subscription:
           attributes:
-            base:
-              email_exists: 'Пользователь с данным email уже зарегистрирован'
-              decline_self_subscription: 'Нельзя подписаться на свое событие'
+            user_email:
+              already_exists: 'Пользователь с данным email уже зарегистрирован'
 
     # Перевод названий аттрибутов моделей
     attributes:

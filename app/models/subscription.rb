@@ -9,10 +9,12 @@ class Subscription < ActiveRecord::Base
   validates :user_email, presence: true, format: /\A[a-zA-Z0-9\-_.]+@[a-zA-Z0-9\-_.]+\z/, unless: -> { user.present? }
 
   # для данного event_id один юзер может подписаться только один раз (если юзер задан)
-  validates :user, uniqueness: {scope: :event_id}, if: -> { user.present? }
+  validates :user, uniqueness: { scope: :event_id }, if: -> { user.present? }
 
   # для данного event_id один email может использоваться только один раз (если нет юзера, анонимная подписка)
-  validates :user_email, uniqueness: {scope: :event_id}, unless: -> { user.present? }
+  validates :user_email, uniqueness: { scope: :event_id }, unless: -> { user.present? }
+
+  validate :email_uniq, unless: -> { user.present? }
 
   # переопределяем метод, если есть юзер, выдаем его имя,
   # если нет -- дергаем исходный переопределенный метод
@@ -32,6 +34,10 @@ class Subscription < ActiveRecord::Base
     else
       super
     end
+  end
+
+  def email_uniq
+    errors.add(:user_email, :already_exists) if User.find_by(email: user_email)
   end
 end
 
