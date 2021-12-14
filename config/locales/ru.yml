@@ -6,10 +6,13 @@ ru:
       event: 'Событие'
       comment: 'Комментарий'
       subscription: 'Подписка'
+      photo: 'Фотография'
     errors:
       models:
         subscription:
           attributes:
+            user:
+              cant_be_subscriber: 'инициатор события'
             user_email:
               already_exists: 'Пользователь с данным email уже зарегистрирован'
 

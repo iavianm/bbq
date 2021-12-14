@@ -17,9 +17,9 @@ class User < ApplicationRecord
             uniqueness: true,
             format: /\A[a-zA-Z0-9\-_.]+@[a-zA-Z0-9\-_.]+\z/
 
-  # before_validation :set_name, on: :create
-
   after_commit :link_subscriptions, on: :create
+
+  mount_uploader :avatar, AvatarUploader
 
   private
 

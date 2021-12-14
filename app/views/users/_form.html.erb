@@ -12,6 +12,12 @@
     <%= f.text_field :email, class: 'form-control' %>
   </div>
 
+  <div class="mb-3">
+    <%= f.label :avatar %>
+    <p><%= image_tag(@user.avatar.thumb.url) if @user.avatar? %></p>
+    <%= f.file_field :avatar %>
+  </div>
+
   <div class="actions">
     <%= f.submit 'Сохранить', class: 'btn btn-success' %> <%= link_to 'Вернуться', :back, class: 'btn btn-secondary'%>
   </div>

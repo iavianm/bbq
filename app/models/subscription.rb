@@ -16,6 +16,8 @@ class Subscription < ActiveRecord::Base
 
   validate :email_uniq, unless: -> { user.present? }
 
+  validate :subscribe_event_owner, on: :create
+
   # переопределяем метод, если есть юзер, выдаем его имя,
   # если нет -- дергаем исходный переопределенный метод
   def user_name
@@ -36,8 +38,14 @@ class Subscription < ActiveRecord::Base
     end
   end
 
+  private
+
   def email_uniq
     errors.add(:user_email, :already_exists) if User.find_by(email: user_email)
+  end
+
+  def subscribe_event_owner
+    errors.add(:user, :cant_be_subscriber) if user == event.user
   end
 end
 
