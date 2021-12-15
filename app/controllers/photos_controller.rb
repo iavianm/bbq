@@ -16,6 +16,7 @@ class PhotosController < ApplicationController
     @new_photo.user = current_user
 
     if @new_photo.save
+      notify_subscribers_photo(@event, @new_photo)
       # Если фотографию удалось сохранить, редирект на событие с сообщением
       redirect_to @event, notice: I18n.t('controllers.photos.created')
     else
@@ -26,14 +27,14 @@ class PhotosController < ApplicationController
 
   # Действие для удаления фотографии
   def destroy
-    message = {notice: I18n.t('controllers.photos.destroyed')}
+    message = { notice: I18n.t('controllers.photos.destroyed') }
 
     # Проверяем, может ли пользователь удалить фотографию
     # Если может — удаляем, нет, меняем сообщение
     if current_user_can_edit?(@photo)
       @photo.destroy
     else
-      message = {alert: I18n.t('controllers.photos.error')}
+      message = { alert: I18n.t('controllers.photos.error') }
     end
 
     # И в любом случае редиректим его на событие
@@ -57,5 +58,16 @@ class PhotosController < ApplicationController
   # c единственным полем (оно тоже называется photo)
   def photo_params
     params.fetch(:photo, {}).permit(:photo)
+  end
+
+  def notify_subscribers_photo(event, photo)
+    # собираем всех подписчиков и автора события в массив мэйлов, исключаем повторяющиеся
+    all_emails = (event.subscriptions.map(&:user_email) + [event.user.email] - [@new_photo.user.email]).uniq
+
+    # XXX: Этот метод может выполняться долго из-за большого числа подписчиков
+    # поэтому в реальных приложениях такие вещи надо выносить в background задачи!
+    all_emails.each do |mail|
+      EventMailer.photo(event, photo, mail).deliver_now
+    end
   end
 end

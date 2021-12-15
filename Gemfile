@@ -7,9 +7,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'carrierwave'
 gem 'devise'
 gem 'devise-i18n'
-gem "dotenv-rails"
+gem 'dotenv-rails'
 gem 'fog-aws'
-gem "mailjet"
+gem 'mailjet'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'rails-i18n'
@@ -26,6 +26,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'letter_opener'
   gem 'listen', '~> 3.3'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'spring'

@@ -1,0 +1,21 @@
+<h1><%= t '.title' %></h1>
+
+<p><%= asset_path("../public#{@photo.photo.thumb.url}") %></p>
+<%= asset_path(@photo.photo.thumb.url) %>
+
+<%= image_tag(@photo.photo.thumb.url) %>
+
+<%= image_tag("https://dashboard.snapcraft.io/site_media/appmedia/2018/04/9c52b09c736d0683d341c126da62d008.png") %>
+
+<p><%= t '.author' %>: <strong><%= @photo.user.name %></strong></p>
+
+<hr/>
+
+<%= t '.event' %>
+<h3><%= @event.title %></h3>
+
+<%= t '.datetime' %>
+<h4><%= l @event.datetime %></h4>
+
+<%= t '.owner' %>
+<h4><%= @event.user.name %></h4>
