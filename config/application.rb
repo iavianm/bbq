@@ -14,6 +14,8 @@ require "action_view/railtie"
 require "action_cable/engine"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
+require 'mailjet'
+require 'dotenv/load'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -34,5 +36,6 @@ module Bbq
     config.i18n.default_locale = :ru
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.action_mailer.delivery_method = :mailjet
   end
 end
