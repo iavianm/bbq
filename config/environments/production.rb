@@ -125,13 +125,12 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   # Настройки для Sendgrid
-  ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.trustifi.com',
-    :port           => '25',
-    :authentication => :plain,
-    :user_name      => ENV['TRUSTIFI_KEY'],
-    :password       => ENV['TRUSTIFI_SECRET'],
-    :domain         => 'heroku.com',
-    :enable_starttls_auto => true
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.gmail.com',
+    port: '587',
+    user_name: 'iavianm.ruby', # не используйте для тестов свои реальные ящики
+    password: 'Test2021', # не храните здесь пароль!
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
 end
