@@ -113,7 +113,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   # Базовый урл сайта, для генерации правильных ссылок в письмах
   # ПРОПИСЫВАЙТЕ свой!
-  config.action_mailer.default_url_options = { host: 'bbqtest.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'bbqiavianm.herokuapp.com' }
 
   # Вываливать ли посетителю сайта ошибки при отправке писем
   config.action_mailer.raise_delivery_errors = false
@@ -125,12 +125,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   # Настройки для Sendgrid
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: '587',
-    user_name: ENV['GOOGLE_API_KEY'],
-    password: ENV['GOOGLE_SECRET_KEY'],
-    authentication: 'plain',
-    enable_starttls_auto: true
+  ActionMailer::Base.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'bbqiavianm.herokuapp.com',
+    :enable_starttls_auto => true
   }
 end
