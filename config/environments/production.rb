@@ -128,8 +128,8 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: '587',
-    user_name: 'iavianm.ruby', # не используйте для тестов свои реальные ящики
-    password: 'Test2021', # не храните здесь пароль!
+    user_name: ENV['GOOGLE_API_KEY'],
+    password: ENV['GOOGLE_SECRET_KEY'],
     authentication: 'plain',
     enable_starttls_auto: true
   }
