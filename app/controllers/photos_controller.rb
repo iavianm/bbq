@@ -62,7 +62,7 @@ class PhotosController < ApplicationController
 
   def notify_subscribers_photo(event, photo)
     # собираем всех подписчиков и автора события в массив мэйлов, исключаем повторяющиеся
-    all_emails = (event.subscriptions.map(&:user_email) + [event.user.email] - [@new_photo.user.email]).uniq
+    all_emails = (event.subscriptions.map(&:user_email) + [event.user.email] - [photo.user&.email]).uniq
 
     # XXX: Этот метод может выполняться долго из-за большого числа подписчиков
     # поэтому в реальных приложениях такие вещи надо выносить в background задачи!
