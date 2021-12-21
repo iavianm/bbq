@@ -7,10 +7,14 @@ class Event < ApplicationRecord
   has_many :photos
 
   validates :title, presence: true, length: { maximum: 255 }
-  validates :address, presence: true
+  validates :address, presence: true, length: { maximum: 50 }, format: /[[:word:]-]+/
   validates :datetime, presence: true
 
   def visitors
     (subscribers + [user]).uniq
+  end
+
+  def pincode_valid?(pin2chek)
+    pincode == pin2chek
   end
 end
