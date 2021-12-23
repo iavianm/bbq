@@ -4,10 +4,11 @@ class Photo < ApplicationRecord
 
   validates :event, presence: true
   validates :user, presence: true
+  validates_format_of :photo, with: %r{/([a-zA-Zа-яА-Я\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i}i
 
   mount_uploader :photo, PhotoUploader
 
-  # Этот scope нужен нам, чтобы отделить реальные фотки от болваной
+  # Этот scope нужен нам, чтобы отделить реальные фотки от болванки
   # см. events_controller
-  scope :persisted, -> { where "id IS NOT NULL" }
+  scope :persisted, -> { where 'id IS NOT NULL' }
 end
