@@ -4,7 +4,7 @@ class Photo < ApplicationRecord
 
   validates :event, presence: true
   validates :user, presence: true
-  validates_format_of :photo, with: %r{/([a-zA-Zа-яА-Я\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i}i
+  validates_format_of :photo, with: /([a-zA-Zа-яА-Я\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i
 
   mount_uploader :photo, PhotoUploader
 
