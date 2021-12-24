@@ -15,6 +15,7 @@ const imagePath = (name) => images(name, true)
 
 import 'bootstrap/dist/js/bootstrap'
 import "@fortawesome/fontawesome-free/css/all"
+import "lightbox2/dist/js/lightbox-plus-jquery"
 
 Rails.start()
 Turbolinks.start()

@@ -113,7 +113,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   # Базовый урл сайта, для генерации правильных ссылок в письмах
   # ПРОПИСЫВАЙТЕ свой!
-  config.action_mailer.default_url_options = { host: 'bbqiavianm.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'bbqiavianm.herokuapp.com', protocol: 'https' }
 
   # Вываливать ли посетителю сайта ошибки при отправке писем
   config.action_mailer.raise_delivery_errors = false
