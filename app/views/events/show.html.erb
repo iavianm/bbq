@@ -121,10 +121,10 @@
         });
 
       let myPlacemark = new ymaps.Placemark(coords, {
-          iconContent: '<%= @event.title %>',
-          balloonContent: '<%= @event.description %>'
+        iconContent: '<%= @event.title %>',
+        balloonContent: '<%= @event.description %>'
       }, {
-          preset: 'islands#violetStretchyIcon'
+        preset: 'islands#violetStretchyIcon'
       });
 
       myMap.geoObjects.add(myPlacemark);
