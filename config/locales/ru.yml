@@ -74,6 +74,11 @@ ru:
     subscription:
       destroy_confirm: 'Вы уверены, что хотите удалить эту подписку?'
 
+  photos:
+    photo:
+      destroy_confirm: 'Вы уверены, что хотите удалить эту фотографию?'
+      add: 'Добавил:'
+
   event_mailer:
     comment:
       title: 'Новый комментарий'
@@ -198,7 +203,6 @@ ru:
   send: 'Отправить'
   subscribe: 'Подписаться'
   subscribers: 'Подписались:'
-  photos: 'Фоток:'
   will_go: 'Пойдут:'
   back: 'Назад'
   create_event: 'Создать событие'

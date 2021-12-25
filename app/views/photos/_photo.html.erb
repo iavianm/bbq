@@ -1,14 +1,11 @@
-<%# Паршал для вывода отдельной фотографии %>
-<div class="event-photo buffer-both">
-  <%# if photo.photo.url.present? %>
-    <%#= link_to image_tag(photo.photo.thumb.url), photo.photo.url %>
-  <%# end %>
+<% image_title = "#{t('.add')} #{render partial: 'users/user', object: photo.user}" %>
+<% if current_user_can_edit?(photo) %>
+  <% delete_icon = link_to(fa_icon('trash'), event_photo_path(photo.event, photo), method: :delete, data: {confirm: t('.destroy_confirm')}) %>
+  <% image_title << delete_icon %>
+<% end %>
 
-  <%= link_to image_path(photo.photo), data: { lightbox: photo.photo } do %>
-    <%= image_tag(photo.photo.thumb.url) %>
-  <% end %>
-
-
-  <%# Показываем не только фотку, но и юзаре, который её добавил %>
-  Добавил <%= render partial: 'users/user', object: photo.user %>
-</div>
+<% if photo.photo.url.present? %>
+  <%= link_to image_tag(photo.photo.thumb.url), photo.photo.url, data: {lightbox: 'roadtrip', title: image_title, alt: 'photo'} %>
+  <%#= t('.add') %>
+  <%#= render partial: 'users/user', object: photo.user %>
+<% end %>

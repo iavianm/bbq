@@ -41,7 +41,7 @@
       <div id="map" style="width: auto; height: 300px"></div>
       <div class="event-photos">
         <%# Выводим все фотографии события %>
-        <div class="event-photos-gallery">
+        <div class="event-photos-gallery event-photo buffer-both">
           <%= render partial: 'photos/photo', collection: @event.photos.except(@new_photo) %>
         </div>
 
