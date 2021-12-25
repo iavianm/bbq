@@ -17,6 +17,11 @@ import 'bootstrap/dist/js/bootstrap'
 import "@fortawesome/fontawesome-free/css/all"
 import "lightbox2/dist/js/lightbox-plus-jquery"
 
+let lightbox2 = function () {
+    $(".lightbox2").lightbox2();
+};
+$(document).on("page:load ready", lightbox2);
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
