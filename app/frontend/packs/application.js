@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
+// import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
@@ -17,11 +17,6 @@ import 'bootstrap/dist/js/bootstrap'
 import "@fortawesome/fontawesome-free/css/all"
 import "lightbox2/dist/js/lightbox-plus-jquery"
 
-let lightbox2 = function () {
-    $(".lightbox2").lightbox2();
-};
-$(document).on("page:load ready", lightbox2);
-
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
