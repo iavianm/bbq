@@ -32,6 +32,7 @@ group :development do
   gem 'spring'
   gem 'sqlite3', '~> 1.4'
   gem 'web-console', '>= 4.1.0'
+  gem 'pg'
 end
 
 group :test do
