@@ -79,6 +79,9 @@ ru:
       destroy_confirm: 'Вы уверены, что хотите удалить эту фотографию?'
       add: 'Добавил:'
 
+  pundit:
+    no_access: 'Доступ закрыт'
+
   event_mailer:
     comment:
       title: 'Новый комментарий'

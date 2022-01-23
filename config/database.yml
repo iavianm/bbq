@@ -6,6 +6,14 @@ development:
   host: localhost
   encoding: unicode
 
+test:
+  adapter: postgresql
+  database: <%= ENV['APPNAME_DATABASE_T'] %>
+  username: <%= ENV['APPNAME_DATABASE_T_USER'] %>
+  password: <%= ENV['APPNAME_DATABASE_T_PASSWORD'] %>
+  host: localhost
+  encoding: unicode
+
 production:
   adapter: postgresql
   database: <%= ENV['APPNAME_DATABASE_P'] %>

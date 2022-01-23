@@ -11,6 +11,7 @@ gem 'dotenv-rails'
 gem 'fog-aws'
 gem 'mailjet'
 gem 'puma', '~> 5.0'
+gem 'pundit'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'rails-i18n'
 gem 'rmagick'
@@ -23,20 +24,22 @@ end
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails'
 end
 
 group :development do
   gem 'letter_opener'
   gem 'listen', '~> 3.3'
+  gem 'pg'
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'spring'
   gem 'sqlite3', '~> 1.4'
   gem 'web-console', '>= 4.1.0'
-  gem 'pg'
 end
 
 group :test do
   gem 'capybara', '>= 3.26'
+  gem 'factory_bot_rails'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end

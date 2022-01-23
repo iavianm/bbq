@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: %i[show index]
-  before_action :set_event, only: %i[show]
-  before_action :set_current_user_event, only: %i[edit update destroy]
+  before_action :set_event, only: %i[show edit update destroy]
   before_action :password_guard!, only: %i[show]
+  after_action :verify_authorized, only: %i[edit update destroy show]
 
   # GET /events or /events.json
   def index
@@ -11,6 +11,7 @@ class EventsController < ApplicationController
 
   # GET /events/1 or /events/1.json
   def show
+    authorize @event
     @new_comment = @event.comments.build(params[:comment])
     @new_subscription = @event.subscriptions.build(params[:subscription])
     @new_photo = @event.photos.build(params[:photo])
@@ -22,7 +23,9 @@ class EventsController < ApplicationController
   end
 
   # GET /events/1/edit
-  def edit; end
+  def edit
+    authorize @event
+  end
 
   # POST /events or /events.json
   def create
@@ -36,6 +39,7 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1 or /events/1.json
   def update
+    authorize @event
     if @event.update(event_params)
       redirect_to @event, notice: I18n.t('controllers.events.updated')
     else
@@ -45,6 +49,7 @@ class EventsController < ApplicationController
 
   # DELETE /events/1 or /events/1.json
   def destroy
+    authorize @event
     @event.destroy
     redirect_to events_url, notice: I18n.t('controllers.events.destroyed')
   end
