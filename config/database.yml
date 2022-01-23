@@ -6,10 +6,10 @@ development:
   host: localhost
   encoding: unicode
 
-#production:
-#  adapter: postgresql
-#    database: <%#= ENV['APPNAME_DATABASE_P'] %>
-#    username: <%#= ENV['APPNAME_DATABASE_P_USER'] %>
-#    password: <%#= ENV['APPNAME_DATABASE_P_PASSWORD'] %>
-#    host: localhost
-#    encoding: unicode
+production:
+  adapter: postgresql
+  database: <%= ENV['APPNAME_DATABASE_P'] %>
+  username: <%= ENV['APPNAME_DATABASE_P_USER'] %>
+  password: <%= ENV['APPNAME_DATABASE_P_PASSWORD'] %>
+  host: localhost
+  encoding: unicode
