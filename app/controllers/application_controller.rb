@@ -28,6 +28,10 @@ class ApplicationController < ActionController::Base
     )
   end
 
+  def pundit_user
+    PunditUser.new(current_user, cookies)
+  end
+
   private
 
   def user_not_authorized

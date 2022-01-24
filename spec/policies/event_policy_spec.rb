@@ -28,7 +28,7 @@ RSpec.describe EventPolicy, type: :policy do
     context 'user is anon' do
       permissions :show? do
         it 'give access to event' do
-          expect(subject).to permit(event)
+          expect(subject).to permit(nil, event)
         end
       end
     end
@@ -54,7 +54,7 @@ RSpec.describe EventPolicy, type: :policy do
     context 'user is anon' do
       permissions :edit?, :update?, :destroy? do
         it 'not give access to event' do
-          expect(subject).not_to permit(event)
+          expect(subject).not_to permit(nil, event)
         end
       end
     end
