@@ -1,5 +1,14 @@
 <h2>Авторизация</h2>
 
+<% if alert.present? %>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="lead buffer-top buffer-bottom">
+      <p class="alert"><%= alert %></p>
+    </div>
+  </div>
+<% end %>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
   <div class="mb-3">
