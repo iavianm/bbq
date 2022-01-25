@@ -1,19 +1,17 @@
 <% if notice.present? %>
-  <div class="buffer-top alert alert-success alert-dismissible fade show" role="alert">
+  <div class="buffer-top alert alert-success alert-dismissible" role="alert">
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <div class="lead buffer-top buffer-bottom">
-      <p id="notice"><%= notice %></p>
-    </div>
+    <p id="notice"><%= notice %></p>
   </div>
 <% end %>
 
 <div class="event">
-  <div class="event-info row">
+  <div class="event-info buffer-top">
     <div class="col-md-12">
       <%= content_tag 'div', '', class: 'event-background', style: "background-image: url(#{event_photo(@event)})" %>
 
       <div class="event-info-inner row">
-        <div class="col-md-6">
+        <div class="col-md-6 buffer-left">
           <div class="event-description">
             <h1><%= @event.title %></h1>
             <h3><%= l @event.datetime, format: :short %></h3>
@@ -37,7 +35,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-10">
       <div id="map" style="width: auto; height: 300px"></div>
       <div class="event-photos">
         <%# Выводим все фотографии события %>
@@ -62,7 +60,7 @@
       </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-2 text-start">
       <div class="event-owner">
         <h4>Зовет:</h4>
         <p><%= render partial: 'users/user', object: @event.user %></p>
@@ -78,11 +76,11 @@
       </div>
       <% if @event.user == current_user %>
         <div>
-          <h4>Вы инициатор события!</h4>
+          <h6>Вы инициатор события!</h6>
         </div>
       <% else %>
         <div class="event-subscription-form">
-          <h4>Я пойду:</h4>
+          <h6>Я пойду:</h6>
           <div>
             <%= render partial: 'subscriptions/form', locals: {
               subscription: @new_subscription || @event.subscriptions.build

@@ -1,9 +1,7 @@
 <% if notice.present? %>
-  <div class="buffer-top alert alert-success alert-dismissible fade show" role="alert">
+  <div class="buffer-top alert alert-success alert-dismissible" role="alert">
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <div class="lead buffer-top buffer-bottom">
-      <p id="notice"><%= notice %></p>
-    </div>
+    <p id="notice"><%= notice %></p>
   </div>
 <% end %>
 

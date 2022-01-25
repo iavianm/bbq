@@ -1,10 +1,8 @@
 <% errors = model.errors %>
 <% if errors.any? %>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <div class="alert alert-danger alert-dismissible" role="alert">
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    <div class="lead buffer-bottom">
       <%= t(:allowed, count: errors.count) %> <%= t(:number_of_errors, count: errors.count) %>
-    </div>
     <ul>
       <% errors.full_messages.each do |message| %>
         <li><%= message %></li>
