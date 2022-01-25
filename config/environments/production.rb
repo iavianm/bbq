@@ -113,24 +113,24 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   # Базовый урл сайта, для генерации правильных ссылок в письмах
   # ПРОПИСЫВАЙТЕ свой!
-  config.action_mailer.default_url_options = { host: 'bbqiavianm.herokuapp.com', protocol: 'https' }
-
-  # Вываливать ли посетителю сайта ошибки при отправке писем
-  config.action_mailer.raise_delivery_errors = false
-
-  # Делать рассылку писем (если false — мэйлер только имитирует работу, реальных писем не уходит)
-  config.action_mailer.perform_deliveries = true
-
-  # отправка почты по протоколу SMTP
-  config.action_mailer.delivery_method = :smtp
-
-  # Настройки для Sendgrid
-  config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
-    port: '587',
-    user_name: ENV['GOOGLE_API_KEY'], # не используйте для тестов свои реальные ящики
-    password: ENV['GOOGLE_SECRET_KEY'], # не храните здесь пароль!
-    authentication: 'plain',
-    enable_starttls_auto: true
-  }
+  # config.action_mailer.default_url_options = { host: 'bbqiavianm.herokuapp.com', protocol: 'https' }
+  #
+  # # Вываливать ли посетителю сайта ошибки при отправке писем
+  # config.action_mailer.raise_delivery_errors = false
+  #
+  # # Делать рассылку писем (если false — мэйлер только имитирует работу, реальных писем не уходит)
+  # config.action_mailer.perform_deliveries = true
+  #
+  # # отправка почты по протоколу SMTP
+  # config.action_mailer.delivery_method = :smtp
+  #
+  # # Настройки для Sendgrid
+  # config.action_mailer.smtp_settings = {
+  #   address: 'smtp.gmail.com',
+  #   port: '587',
+  #   user_name: ENV['GOOGLE_API_KEY'], # не используйте для тестов свои реальные ящики
+  #   password: ENV['GOOGLE_SECRET_KEY'], # не храните здесь пароль!
+  #   authentication: 'plain',
+  #   enable_starttls_auto: true
+  # }
 end
