@@ -35,6 +35,13 @@ group :development do
   gem 'spring'
   gem 'sqlite3', '~> 1.4'
   gem 'web-console', '>= 4.1.0'
+
+  gem 'capistrano',           require: false
+  gem 'capistrano-bundler',   require: false
+  gem 'capistrano-passenger', require: false
+  gem 'capistrano-rails',     require: false
+  gem 'capistrano-rbenv',     require: false
+  gem 'capistrano-resque',    require: false
 end
 
 group :test do
