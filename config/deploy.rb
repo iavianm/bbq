@@ -11,6 +11,8 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'public/uploads'
 
 after 'deploy:restart', 'resque:restart'
 
+Rake::Task["deploy:assets:backup_manifest"].clear_actions
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
