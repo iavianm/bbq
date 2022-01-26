@@ -387,6 +387,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
   rails-i18n
+  resque
   rmagick
   rspec-rails
   selenium-webdriver
@@ -401,4 +402,4 @@ RUBY VERSION
    ruby 3.0.2p107
 
 BUNDLED WITH
-   2.2.32
+   2.3.5
