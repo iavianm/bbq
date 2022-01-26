@@ -43,4 +43,10 @@ class SubscriptionsController < ApplicationController
     # .fetch разрешает в params отсутствие ключа :subscription
     params.fetch(:subscription, {}).permit(:user_email, :user_name)
   end
+
+  def notify_subscribers(event, subscription)
+    return if @event.notifications == false
+
+    EventMailer.subscription(event, subscription).deliver_later
+  end
 end
