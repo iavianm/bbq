@@ -9,8 +9,6 @@ set :deploy_to, '/home/deploy/www'
 append :linked_files, 'config/master.key', 'config/database.yml', '.env'
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'public/uploads'
 
-after 'deploy:restart', 'resque:restart'
-
 Rake::Task["deploy:assets:backup_manifest"].clear_actions
 
 # Default branch is :master
