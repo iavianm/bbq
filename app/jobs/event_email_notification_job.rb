@@ -5,7 +5,7 @@ class EventEmailNotificationJob < ApplicationJob
     event = object.event
 
     all_emails =
-      (event.subscriptions.map(&:user_email) + [event.user.email]).uniq - [object&.user&.email]
+      (event.subscriptions.map(&:user_email) + [event.user.email]).uniq - [object.user&.email]
 
     case object
     when Comment
