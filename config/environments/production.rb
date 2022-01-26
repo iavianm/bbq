@@ -113,7 +113,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   # Базовый урл сайта, для генерации правильных ссылок в письмах
   # ПРОПИСЫВАЙТЕ свой!
-  config.action_mailer.default_url_options = { host: ENV['ACTION_MAILER_HOST'], protocol: 'https' }
+  config.action_mailer.default_url_options = { host: ENV['ACTION_MAILER_HOST'], protocol: 'http' }
 
   # Вываливать ли посетителю сайта ошибки при отправке писем
   config.action_mailer.raise_delivery_errors = false
