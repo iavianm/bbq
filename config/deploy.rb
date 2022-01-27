@@ -1,7 +1,7 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.16.0"
+lock '~> 3.16.0'
 
-set :application, "bbqiavianm"
+set :application, 'bbqiavianm'
 set :repo_url, 'git@github.com:iavianm/bbq.git'
 
 set :deploy_to, '/home/deploy/www'
@@ -11,7 +11,7 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'public/uploads'
 
 after 'deploy:restart', 'resque:restart'
 
-Rake::Task["deploy:assets:backup_manifest"].clear_actions
+Rake::Task['deploy:assets:backup_manifest'].clear_actions
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
