@@ -1,20 +1,31 @@
-class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  def facebook
-    # Дёргаем метод модели, который найдёт пользователя
-    @user = User.find_for_facebook_oauth(request.env['omniauth.auth'])
+module Users
+  class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-    # Если юзер есть, то логиним и редиректим на его страницу
-    if @user.persisted?
-      flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: 'Facebook')
-      sign_in_and_redirect @user, event: :authentication
-      # Если неудачно, то выдаём ошибку и редиректим на главную
-    else
-      flash[:error] = I18n.t(
-        'devise.omniauth_callbacks.failure',
-        kind: 'Facebook',
-        reason: 'authentication error'
-      )
+    def vkontakte
+      authenticate_user(:vkontakte)
+    end
 
+    def facebook
+      authenticate_user(:facebook)
+    end
+
+    def authenticate_user(provider)
+      @user = User.from_omniauth(request.env['omniauth.auth'])
+
+      if @user.persisted?
+        sign_in_and_redirect @user, event: :authentication
+        set_flash_message(:notice, :success, kind: provider) if is_navigational_format?
+      else
+        flash[:error] = I18n.t(
+          'devise.omniauth_callbacks.failure',
+          kind: 'vkontakte',
+          reason: 'authentication error'
+        )
+        redirect_to new_user_registration_url
+      end
+    end
+
+    def failure
       redirect_to root_path
     end
   end
