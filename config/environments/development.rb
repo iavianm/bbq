@@ -84,4 +84,5 @@ Rails.application.configure do
   }
 
   config.hosts << '.lvh.me'
+  config.hosts << '2990-217-170-124-124.ngrok.io'
 end

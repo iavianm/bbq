@@ -82,6 +82,22 @@ ru:
   pundit:
     no_access: 'Доступ закрыт'
 
+  users:
+    registrations:
+      new:
+        sign_up: 'Регистрация'
+      edit:
+        title: 'Редактировать профиль'
+        we_need_your_current_password_to_confirm_your_changes: 'Нам нужен ваш текущий пароль, чтобы подтвердить ваши изменения'
+        leave_blank_if_you_don_t_want_to_change_it: 'Оставьте пустым, если не хотите его менять'
+    sessions:
+      new:
+        sign_in: 'Авторизация'
+    passwords:
+      new:
+        send_me_reset_password_instructions: 'Выслать инструкцию для сброса пароля'
+        forgot_your_password: 'Забыли пароль?'
+
   event_mailer:
     comment:
       title: 'Новый комментарий'
