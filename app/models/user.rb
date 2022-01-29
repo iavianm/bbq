@@ -1,11 +1,4 @@
 class User < ApplicationRecord
-  def self.from_omniauth(auth)
-    user = where(email: auth.info.email).first
-    user ||= create!(provider: auth.provider, uid: auth.uid, name: auth.info.name.split.first,
-                          email: auth.info.email, remote_avatar_url: auth[:info][:image], password: Devise.friendly_token[0, 20])
-    user
-  end
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook vkontakte]
@@ -24,6 +17,14 @@ class User < ApplicationRecord
   after_commit :link_subscriptions, on: :create
 
   mount_uploader :avatar, AvatarUploader
+
+  def self.from_omniauth(auth)
+    user = where(email: auth.info.email).first
+    user ||= create!(provider: auth.provider, uid: auth.uid, name: auth.info.name.split.first,
+                     email: auth.info.email, remote_avatar_url: auth[:info][:image],
+                     password: Devise.friendly_token[0, 20])
+    user
+  end
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
