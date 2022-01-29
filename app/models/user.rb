@@ -10,8 +10,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :subscriptions, dependent: :destroy
 
-  has_many :events
-
   validates :name, presence: true, length: { maximum: 35 }
 
   validates :email, length: { maximum: 255 },
@@ -27,10 +25,10 @@ class User < ApplicationRecord
   end
 
   def self.from_omniauth(auth)
-    name_split = auth.info.name.split(" ")
+    # byebug
     user = User.where(email: auth.info.email).first
-    user ||= User.create!(provider: auth.provider, uid: auth.uid, name: name_split[0], email: auth.info.email,
-                          avatar: auth.info.image, password: Devise.friendly_token[0, 20])
+    user ||= User.create!(provider: auth.provider, uid: auth.uid, name: auth.info.name.split.first,
+                          email: auth.info.email, remote_avatar_url: auth[:info][:image], password: Devise.friendly_token[0, 20])
     user
   end
 

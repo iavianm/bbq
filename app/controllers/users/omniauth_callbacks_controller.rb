@@ -1,6 +1,5 @@
 module Users
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-
     def vkontakte
       authenticate_user(:vkontakte)
     end
@@ -18,15 +17,11 @@ module Users
       else
         flash[:error] = I18n.t(
           'devise.omniauth_callbacks.failure',
-          kind: 'vkontakte',
+          kind: 'provider',
           reason: 'authentication error'
         )
         redirect_to new_user_registration_url
       end
-    end
-
-    def failure
-      redirect_to root_path
     end
   end
 end
