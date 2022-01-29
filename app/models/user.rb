@@ -1,6 +1,11 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  def self.from_omniauth(auth)
+    user = where(email: auth.info.email).first
+    user ||= create!(provider: auth.provider, uid: auth.uid, name: auth.info.name.split.first,
+                          email: auth.info.email, remote_avatar_url: auth[:info][:image], password: Devise.friendly_token[0, 20])
+    user
+  end
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook vkontakte]
@@ -22,14 +27,6 @@ class User < ApplicationRecord
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
-  end
-
-  def self.from_omniauth(auth)
-    # byebug
-    user = User.where(email: auth.info.email).first
-    user ||= User.create!(provider: auth.provider, uid: auth.uid, name: auth.info.name.split.first,
-                          email: auth.info.email, remote_avatar_url: auth[:info][:image], password: Devise.friendly_token[0, 20])
-    user
   end
 
   private

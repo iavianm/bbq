@@ -13,7 +13,7 @@ module Users
 
       if @user.persisted?
         sign_in_and_redirect @user, event: :authentication
-        set_flash_message(:notice, :success, kind: provider) if is_navigational_format?
+        set_flash_message(:notice, :success, kind: provider)
       else
         flash[:error] = I18n.t(
           'devise.omniauth_callbacks.failure',
