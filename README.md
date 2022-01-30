@@ -1,24 +1,46 @@
 # README
+== Гоу на шашлыки!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Учебное приложение — организатор событий на rails 6.14 и Ruby 3.0.2
 
-Things you may want to cover:
+Предназначено для освоения работы с загрузкой файлов, аутентификацией, авторизацией, 
+гемами devise, carrierwave, фреймворком bootstrap, очередями worker resque, redis, MAILJET.
 
-* Ruby version
+Учит также основам работы с локализацией и YML файлами.
 
-* System dependencies
+При желании может быть взято за основу для полезного и серьезного проекта.
 
-* Configuration
+== Демо
 
-* Database creation
+https://bbqiavianm.ru/
 
-* Database initialization
+== Copyright
 
-* How to run the test suite
+«Хороший программист» 2021 - 2022 
+http://goodprogrammer.ru
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+**Установка**
 
-* ...
+1. Скопировать проект;
+2. Установить и настроить базу данных (в проекте по умолчанию используется PostgreSQL);
+3. Установить Redis, NodeJS, Yarn;
+
+**Настройка**
+
+1. Установка зависимостей командой: 
+`bundle install`
+2. Выполните команды:
+`rails db:create db:migrate`
+3. Создать в корне вашего проекта файл .env
+И пропишите переменные окружения в .env файле:
+`YANDEX_MAP_API_KEY="Ваш апи ключ"
+MAILJET_API_KEY="Ваш апи ключ"
+MAILJET_SECRET_KEY="Ваш апи ключ"
+MAILJET_SENDER="Ваша почта отправки"
+ACTION_MAILER_HOST="Ваш домен"
+FACEBOOK_APP_ID="Ваш апи id"
+FACEBOOK_SECRET_ID="Ваш апи ключ"
+VK_APP_ID="Ваш апи id"
+VK_SECRET_ID="Ваш апи ключ"`
+
