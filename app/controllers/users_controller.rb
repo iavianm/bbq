@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # GET /users/1/edit
   def edit; end
 
   def update
@@ -23,7 +22,6 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
-     # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:name, :email, :avatar)
   end

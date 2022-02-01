@@ -16,9 +16,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name avatar])
   end
 
-  # Вспомогательный метод, возвращает true, если текущий залогиненный юзер
-  # может править указанную модель. Обновили метод — теперь на вход принимаем
-  # event, или «дочерние» объекты
   def current_user_can_edit?(model)
     # Если у модели есть юзер и он залогиненный, пробуем у модели взять .event и
     # если он есть, проверяем его юзера на равенство current_user.

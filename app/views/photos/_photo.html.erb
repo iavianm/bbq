@@ -6,6 +6,4 @@
 
 <% if photo.photo.url.present? %>
   <%= link_to image_tag(photo.photo.thumb.url), photo.photo.url, data: {lightbox: 'roadtrip', title: image_title, alt: 'photo'} %>
-  <%#= t('.add') %>
-  <%#= render partial: 'users/user', object: photo.user %>
 <% end %>

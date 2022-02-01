@@ -5,9 +5,6 @@ class PhotosController < ApplicationController
   # Для действия destroy нужно получить из базы саму фотографию
   before_action :set_photo, only: [:destroy]
 
-  # Действие для создания новой фотографии
-  # Обратите внимание, что фотку может сейчас добавить даже неавторизованный пользовать
-  # Смотрите домашки!
   def create
     # Создаем новую фотографию у нужного события @event
     @new_photo = @event.photos.build(photo_params)

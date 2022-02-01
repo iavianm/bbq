@@ -3,12 +3,10 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
   after_action :verify_authorized, only: %i[edit update destroy show]
 
-  # GET /events or /events.json
   def index
     @events = Event.all
   end
 
-  # GET /events/1 or /events/1.json
   def show
     if params[:pincode].present? && @event.pincode_valid?(params[:pincode])
       cookies.permanent["events_#{@event.id}_pincode"] = params[:pincode]
@@ -26,17 +24,14 @@ class EventsController < ApplicationController
     @new_photo = @event.photos.build(params[:photo])
   end
 
-  # GET /events/new
   def new
     @event = current_user.events.build
   end
 
-  # GET /events/1/edit
   def edit
     authorize @event
   end
 
-  # POST /events or /events.json
   def create
     @event = current_user.events.build(event_params)
     if @event.save
@@ -46,7 +41,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /events/1 or /events/1.json
   def update
     authorize @event
     if @event.update(event_params)
@@ -56,7 +50,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1 or /events/1.json
   def destroy
     authorize @event
     @event.destroy
